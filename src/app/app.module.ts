@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { GreeterComponent } from './greeter/greeter.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GreeterComponent
   ],
   imports: [
     BrowserModule,
