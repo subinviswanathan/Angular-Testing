@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { GreeterComponent } from './greeter/greeter.component';
 import { RouterModule } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
+import { routes } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { NavComponent } from './nav/nav.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

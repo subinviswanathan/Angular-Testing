@@ -18,13 +18,13 @@ describe('NavComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NavComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
-  xit('should have a link to todos pages', () => {
-    let dElems = fixture.debugElement.queryAll(By.directive(RouterLinkWithHref));
+  it('should have a link to todos pages', () => {
+    let dElems = fixture.debugElement.queryAll(By.css('a'));
 
-    let index = dElems.findIndex(de => de.properties['href'] == '/todos');
+    let index = dElems.findIndex(de => de.attributes['routerLink'] == 'todos');
     expect(index).toBeGreaterThan(-1);
   });
 });
