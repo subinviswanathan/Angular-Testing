@@ -15,7 +15,7 @@ export class TodoService {
   }
 
   getTodosPromise() {
-    return this.http.get('https://jsonplaceholder.typicode.com/posts/1');
+    return this.http.get<any[]>('https://jsonplaceholder.typicode.com/posts/1').toPromise();
   }
 
   delete(id) {

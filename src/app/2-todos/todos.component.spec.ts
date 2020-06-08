@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -33,7 +33,7 @@ describe('TodosComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should load todos from the server', () => {
+  xit('should load todos from the server', () => {
     //fixture.debugElement.injector.get(TodoService) // To get the dependency from component directly.
 
     let service = TestBed.get(TodoService); // It works if we have dependency at module level.
@@ -43,4 +43,30 @@ describe('TodosComponent', () => {
 
     expect(component.todos.length).toBe(3);
   });
+
+  xit('should load todos from the server', async(() => {
+    //fixture.debugElement.injector.get(TodoService) // To get the dependency from component directly.
+
+    let service = TestBed.get(TodoService); // It works if we have dependency at module level.
+    spyOn(service, 'getTodosPromise').and.returnValue(Promise.resolve([1, 2, 3]));
+
+    fixture.detectChanges();
+
+    fixture.whenStable()
+      .then(() => {
+        expect(component.todos.length).toBe(3);
+      })
+  }));
+
+  it('should load todos from the server', fakeAsync(() => {
+    //fixture.debugElement.injector.get(TodoService) // To get the dependency from component directly.
+
+    let service = TestBed.get(TodoService); // It works if we have dependency at module level.
+    spyOn(service, 'getTodosPromise').and.returnValue(Promise.resolve([1, 2, 3]));
+
+    fixture.detectChanges();
+
+    tick();
+    expect(component.todos.length).toBe(3);
+  }));
 });
