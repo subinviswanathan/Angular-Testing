@@ -24,7 +24,7 @@ describe('NavComponent', () => {
   it('should have a link to todos pages', () => {
     let dElems = fixture.debugElement.queryAll(By.css('a'));
 
-    let index = dElems.findIndex(de => de.attributes['routerLink'] == 'todos');
+    let index = dElems.findIndex(de => de.attributes['routerLink'] === '/todos');
     expect(index).toBeGreaterThan(-1);
   });
 });
